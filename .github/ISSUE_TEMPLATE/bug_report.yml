@@ -1,0 +1,59 @@
+name: Bug report
+description: Something in Noted isn't working right
+labels: [bug]
+body:
+  - type: input
+    id: version
+    attributes:
+      label: Noted version
+      description: Noted ▸ About Noted shows it (for example 0.2.0).
+      placeholder: 0.2.0
+    validations:
+      required: true
+  - type: input
+    id: macos
+    attributes:
+      label: macOS version
+      placeholder: macOS 15.1
+    validations:
+      required: true
+  - type: dropdown
+    id: chip
+    attributes:
+      label: Mac type
+      options:
+        - Apple silicon
+        - Intel
+        - Not sure
+    validations:
+      required: false
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: What you saw, including any error message word for word.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Open a project with …
+        2. Click …
+        3. …
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect instead?
+    validations:
+      required: false
+  - type: textarea
+    id: extra
+    attributes:
+      label: Anything else
+      description: Screenshots, your theme, relevant parts of .noted/config.json, whether a terminal agent was running.
+    validations:
+      required: false

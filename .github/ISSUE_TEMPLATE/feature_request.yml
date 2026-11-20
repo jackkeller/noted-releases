@@ -1,0 +1,24 @@
+name: Feature request
+description: Something you wish Noted did
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What are you trying to do?
+      description: The task or workflow, not the solution. This is the most useful part.
+    validations:
+      required: true
+  - type: textarea
+    id: idea
+    attributes:
+      label: What would you like Noted to do?
+    validations:
+      required: false
+  - type: textarea
+    id: context
+    attributes:
+      label: Anything else
+      description: How you handle it today, apps that do this well, and so on.
+    validations:
+      required: false

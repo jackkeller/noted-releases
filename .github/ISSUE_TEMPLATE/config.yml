@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: License or purchase problems
+    url: https://jackkeller.dev/apps/noted
+    about: Anything involving your license key or payment belongs in email (the support address is on this page), so it stays private.
