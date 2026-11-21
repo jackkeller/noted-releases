@@ -3,6 +3,15 @@
   <channel>
     <title>Noted</title>
     <item>
+      <title>Noted 0.2.2</title>
+      <pubDate>Fri, 20 Nov 2026 22:21:46 -0600</pubDate>
+      <sparkle:version>52</sparkle:version>
+      <sparkle:shortVersionString>0.2.2</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+      <description><![CDATA[<p>Noted gets a material feel.</p><ul><li>Paper texture across the whole app shell, modeled on real stock: faint tooth with sparse fiber flecks, tuned to stay felt-more-than-seen. Every built-in theme carries it; your own theme files can set &quot;material&quot; too (or leave it out for flat)</li><li>The title bar now carries the theme instead of system gray, so the window reads as one surface</li><li>A soft bevel around the window edge gives the app a gently raised feel</li><li>New built-in theme: Paper, a warm light theme that shows the texture off</li><li>Fixed a faint sharp-cornered ghost behind the theme picker&#x27;s rounded corners</li></ul>]]></description>
+      <enclosure url="https://github.com/jackkeller/noted-releases/releases/download/v0.2.2/Noted-0.2.2.dmg" type="application/octet-stream" sparkle:edSignature="cs2EaSn3Klr663YOqxMvCQJUoFkGBya6MJkScdI95OuR72+tzPxORs0bqCoCBiR9JdPXsYZk5xszbBvl+RTdDA==" length="11576103"/>
+    </item>
+    <item>
       <title>Noted 0.2.1</title>
       <pubDate>Fri, 20 Nov 2026 18:37:03 -0600</pubDate>
       <sparkle:version>45</sparkle:version>

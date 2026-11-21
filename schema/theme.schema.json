@@ -20,6 +20,25 @@
       "enum": ["dark", "light"],
       "description": "Drives native window chrome and followSystem matching."
     },
+    "material": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Optional shell material (THEME-8). Omitted means flat; texture covers the writing surface only.",
+      "properties": {
+        "texture": {
+          "enum": ["none", "paper", "canvas"],
+          "default": "none",
+          "description": "Grain multiplied over the editor background."
+        },
+        "textureIntensity": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "default": 0.11,
+          "description": "Grain strength; 0 renders as none."
+        }
+      }
+    },
     "ui": {
       "type": "object",
       "required": ["bg", "surface", "surfaceHover", "border", "text", "textMuted", "accent", "accentText", "selection"],
