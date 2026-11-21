@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/jackkeller/noted-releases/main/schema/theme.schema.json",
+  "title": "Noted theme",
+  "type": "object",
+  "required": ["name", "id", "appearance", "ui", "editor", "syntax", "terminal"],
+  "additionalProperties": false,
+  "$defs": {
+    "color": { "type": "string", "pattern": "^#[0-9a-fA-F]{6}([0-9a-fA-F]{2})?$" }
+  },
+  "properties": {
+    "$schema": { "type": "string" },
+    "name": { "type": "string", "description": "Display name shown in the picker." },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$",
+      "description": "Stable identifier; user themes override built-ins on collision."
+    },
+    "appearance": {
+      "enum": ["dark", "light"],
+      "description": "Drives native window chrome and followSystem matching."
+    },
+    "ui": {
+      "type": "object",
+      "required": ["bg", "surface", "surfaceHover", "border", "text", "textMuted", "accent", "accentText", "selection"],
+      "additionalProperties": false,
+      "properties": {
+        "bg": { "$ref": "#/$defs/color" },
+        "surface": { "$ref": "#/$defs/color" },
+        "surfaceHover": { "$ref": "#/$defs/color" },
+        "border": { "$ref": "#/$defs/color" },
+        "text": { "$ref": "#/$defs/color" },
+        "textMuted": { "$ref": "#/$defs/color" },
+        "accent": { "$ref": "#/$defs/color" },
+        "accentText": { "$ref": "#/$defs/color" },
+        "selection": { "$ref": "#/$defs/color" }
+      }
+    },
+    "editor": {
+      "type": "object",
+      "required": ["bg", "text", "heading", "emphasis", "link", "codeBg", "codeText", "quote", "cursor", "selection"],
+      "additionalProperties": false,
+      "properties": {
+        "bg": { "$ref": "#/$defs/color" },
+        "text": { "$ref": "#/$defs/color" },
+        "heading": { "$ref": "#/$defs/color" },
+        "emphasis": { "$ref": "#/$defs/color" },
+        "link": { "$ref": "#/$defs/color" },
+        "codeBg": { "$ref": "#/$defs/color" },
+        "codeText": { "$ref": "#/$defs/color" },
+        "quote": { "$ref": "#/$defs/color" },
+        "cursor": { "$ref": "#/$defs/color" },
+        "selection": { "$ref": "#/$defs/color" }
+      }
+    },
+    "syntax": {
+      "type": "object",
+      "required": ["keyword", "string", "comment", "function", "type", "number", "variable", "punctuation"],
+      "additionalProperties": false,
+      "properties": {
+        "keyword": { "$ref": "#/$defs/color" },
+        "string": { "$ref": "#/$defs/color" },
+        "comment": { "$ref": "#/$defs/color" },
+        "function": { "$ref": "#/$defs/color" },
+        "type": { "$ref": "#/$defs/color" },
+        "number": { "$ref": "#/$defs/color" },
+        "variable": { "$ref": "#/$defs/color" },
+        "punctuation": { "$ref": "#/$defs/color" }
+      }
+    },
+    "terminal": {
+      "type": "object",
+      "required": ["bg", "fg", "cursor", "black", "red", "green", "yellow", "blue", "magenta", "cyan", "white", "brightBlack", "brightRed", "brightGreen", "brightYellow", "brightBlue", "brightMagenta", "brightCyan", "brightWhite"],
+      "additionalProperties": false,
+      "properties": {
+        "bg": { "$ref": "#/$defs/color" },
+        "fg": { "$ref": "#/$defs/color" },
+        "cursor": { "$ref": "#/$defs/color" },
+        "black": { "$ref": "#/$defs/color" },
+        "red": { "$ref": "#/$defs/color" },
+        "green": { "$ref": "#/$defs/color" },
+        "yellow": { "$ref": "#/$defs/color" },
+        "blue": { "$ref": "#/$defs/color" },
+        "magenta": { "$ref": "#/$defs/color" },
+        "cyan": { "$ref": "#/$defs/color" },
+        "white": { "$ref": "#/$defs/color" },
+        "brightBlack": { "$ref": "#/$defs/color" },
+        "brightRed": { "$ref": "#/$defs/color" },
+        "brightGreen": { "$ref": "#/$defs/color" },
+        "brightYellow": { "$ref": "#/$defs/color" },
+        "brightBlue": { "$ref": "#/$defs/color" },
+        "brightMagenta": { "$ref": "#/$defs/color" },
+        "brightCyan": { "$ref": "#/$defs/color" },
+        "brightWhite": { "$ref": "#/$defs/color" }
+      }
+    }
+  }
+}

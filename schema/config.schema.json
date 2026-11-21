@@ -1,0 +1,514 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/jackkeller/noted-releases/main/schema/config.schema.json",
+  "title": "Noted configuration",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "appearance": {
+      "type": "object",
+      "title": "Appearance",
+      "properties": {
+        "theme": {
+          "type": "string",
+          "description": "Theme id used when followSystem is off, or by a project that sets this without setting followSystem.",
+          "default": "catppuccin-mocha"
+        },
+        "themeDark": {
+          "type": "string",
+          "description": "Theme id used in system dark mode.",
+          "default": "catppuccin-mocha"
+        },
+        "themeLight": {
+          "type": "string",
+          "description": "Theme id used in system light mode.",
+          "default": "catppuccin-latte"
+        },
+        "followSystem": {
+          "type": "boolean",
+          "description": "Switch between themeDark and themeLight with the macOS appearance.",
+          "default": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "editor": {
+      "type": "object",
+      "title": "Editor",
+      "properties": {
+        "fontFamily": {
+          "type": "string",
+          "description": "Prose font for the writing surface.",
+          "default": "Georgia, \"New York\", serif"
+        },
+        "fontSize": {
+          "type": "number",
+          "description": "Editor font size in pixels.",
+          "default": 16,
+          "minimum": 10,
+          "maximum": 32
+        },
+        "fontWeight": {
+          "type": "number",
+          "description": "Body text weight (100–900).",
+          "default": 400,
+          "minimum": 100,
+          "maximum": 900
+        },
+        "lineHeight": {
+          "type": "number",
+          "description": "Body line height as a multiple of the font size.",
+          "default": 1.6,
+          "minimum": 1.0,
+          "maximum": 2.6
+        },
+        "headingFontFamily": {
+          "type": "string",
+          "description": "Font for headings. Empty uses the body font.",
+          "default": ""
+        },
+        "headingScale": {
+          "type": "number",
+          "description": "Multiplies the built-in heading sizes (1 = default).",
+          "default": 1,
+          "minimum": 0.7,
+          "maximum": 1.6
+        },
+        "headingWeights": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "minimum": 100,
+            "maximum": 900
+          },
+          "minItems": 6,
+          "maxItems": 6,
+          "description": "Weights for H1–H6 (100–900).",
+          "default": [
+            700,
+            700,
+            700,
+            700,
+            700,
+            700
+          ]
+        },
+        "monoFontFamily": {
+          "type": "string",
+          "description": "Monospace font for code spans and blocks.",
+          "default": "ui-monospace, \"SF Mono\", Menlo, monospace"
+        },
+        "lineWidth": {
+          "type": "number",
+          "description": "Maximum writing column width in characters.",
+          "default": 72,
+          "minimum": 40,
+          "maximum": 160
+        },
+        "autoSave": {
+          "type": "string",
+          "description": "Auto-save behavior for dirty documents.",
+          "enum": [
+            "off",
+            "afterDelay"
+          ],
+          "default": "afterDelay"
+        },
+        "autoSaveDelay": {
+          "type": "number",
+          "description": "Idle milliseconds before auto-save.",
+          "default": 1000,
+          "minimum": 200,
+          "maximum": 10000
+        },
+        "spellcheck": {
+          "type": "boolean",
+          "description": "Use the system spellchecker in markdown documents.",
+          "default": true
+        },
+        "assetFolder": {
+          "type": "string",
+          "description": "Folder beside the document where pasted images are written.",
+          "default": "assets"
+        },
+        "frontmatter": {
+          "type": "string",
+          "description": "Default frontmatter rendering: collapsed panel or raw YAML.",
+          "enum": [
+            "panel",
+            "raw"
+          ],
+          "default": "panel"
+        },
+        "imageMaxHeight": {
+          "type": "number",
+          "description": "Maximum rendered height of inline images, in points.",
+          "default": 400,
+          "minimum": 80,
+          "maximum": 2000
+        },
+        "livePreview": {
+          "type": "boolean",
+          "description": "Render markdown in place (hide syntax marks away from the caret). Off shows raw source.",
+          "default": true
+        },
+        "typography": {
+          "type": "object",
+          "title": "Typography",
+          "properties": {
+            "smartQuotes": {
+              "type": "boolean",
+              "description": "Replace straight quotes with curly quotes while typing.",
+              "default": false
+            },
+            "smartDashes": {
+              "type": "boolean",
+              "description": "Replace -- and --- with en/em dashes while typing.",
+              "default": false
+            }
+          },
+          "additionalProperties": false
+        },
+        "fileTypes": {
+          "type": "object",
+          "description": "Editor settings per file type. Keys are comma-separated extensions; values override fontFamily, fontSize, fontWeight, lineHeight, lineWidth, spellcheck, livePreview or wrap.",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "fontFamily": {
+                "type": "string"
+              },
+              "fontSize": {
+                "type": "number"
+              },
+              "fontWeight": {
+                "type": "number"
+              },
+              "lineHeight": {
+                "type": "number"
+              },
+              "lineWidth": {
+                "type": "number"
+              },
+              "spellcheck": {
+                "type": "boolean"
+              },
+              "livePreview": {
+                "type": "boolean"
+              },
+              "wrap": {
+                "type": "boolean"
+              }
+            },
+            "additionalProperties": false
+          },
+          "default": {
+            "json,jsonc,yaml,yml,toml,js,mjs,cjs,ts,tsx,jsx,py,rb,rs,go,swift,java,kt,c,h,cpp,cs,php,sh,zsh,bash,fish,sql,css,scss,less,html,htm,xml,ini,conf,env": {
+              "fontFamily": "ui-monospace, \"SF Mono\", Menlo, monospace",
+              "lineWidth": 120,
+              "spellcheck": false,
+              "lineHeight": 1.45
+            }
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "terminal": {
+      "type": "object",
+      "title": "Terminal",
+      "properties": {
+        "shell": {
+          "type": "string",
+          "description": "Shell binary. Empty uses your login shell ($SHELL).",
+          "default": ""
+        },
+        "env": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Extra environment variables for terminal sessions.",
+          "default": {}
+        },
+        "fontSize": {
+          "type": "number",
+          "description": "Terminal font size in pixels.",
+          "default": 13,
+          "minimum": 9,
+          "maximum": 24
+        },
+        "scrollback": {
+          "type": "number",
+          "description": "Scrollback buffer in lines.",
+          "default": 10000,
+          "minimum": 1000,
+          "maximum": 100000
+        },
+        "fontFamily": {
+          "type": "string",
+          "description": "Terminal font. Empty uses editor.monoFontFamily.",
+          "default": ""
+        },
+        "profiles": {
+          "type": "array",
+          "description": "Extra terminal profiles (the built-in shell and claude profiles always exist). Each opens a tab running its command through your login shell; agent profiles get checkpoints before each prompt. Give one a shortcut via keybindings → terminal.profile.<id>.",
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "name",
+              "command"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[a-z0-9-]+$"
+              },
+              "name": {
+                "type": "string"
+              },
+              "command": {
+                "type": "string"
+              },
+              "args": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "agent": {
+                "type": "boolean",
+                "default": false
+              }
+            },
+            "additionalProperties": false
+          },
+          "default": [
+            {
+              "id": "codex",
+              "name": "Codex",
+              "command": "codex",
+              "args": [],
+              "agent": true
+            }
+          ]
+        },
+        "defaultProfile": {
+          "type": "string",
+          "description": "Profile id opened by New Terminal and the panel + button (shell, claude, or one of terminal.profiles).",
+          "default": "shell"
+        }
+      },
+      "additionalProperties": false
+    },
+    "claude": {
+      "type": "object",
+      "title": "Claude",
+      "properties": {
+        "binaryPath": {
+          "type": "string",
+          "description": "Path to the claude binary. Empty resolves via the login shell PATH.",
+          "default": ""
+        },
+        "defaultArgs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Extra arguments for new Claude sessions (e.g. --model, opus).",
+          "default": []
+        }
+      },
+      "additionalProperties": false
+    },
+    "layout": {
+      "type": "object",
+      "title": "Layout",
+      "properties": {
+        "terminalPosition": {
+          "type": "string",
+          "description": "Where the terminal panel docks.",
+          "enum": [
+            "bottom",
+            "right"
+          ],
+          "default": "bottom"
+        }
+      },
+      "additionalProperties": false
+    },
+    "workbench": {
+      "type": "object",
+      "title": "Workbench",
+      "properties": {
+        "previewTabs": {
+          "type": "boolean",
+          "description": "Single-click opens a reusable preview tab (italic title); editing or double-click pins it.",
+          "default": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "focus": {
+      "type": "object",
+      "title": "Focus mode",
+      "properties": {
+        "typewriter": {
+          "type": "boolean",
+          "description": "Keep the caret line vertically centered while typing in focus mode.",
+          "default": true
+        },
+        "showWordCount": {
+          "type": "boolean",
+          "description": "Show a faint word count in focus mode (the status bar is hidden).",
+          "default": true
+        },
+        "dimLevel": {
+          "type": "string",
+          "description": "Dim text outside the current paragraph or sentence in focus mode.",
+          "enum": [
+            "off",
+            "paragraph",
+            "sentence"
+          ],
+          "default": "paragraph"
+        }
+      },
+      "additionalProperties": false
+    },
+    "window": {
+      "type": "object",
+      "title": "Window",
+      "properties": {
+        "restoreOnLaunch": {
+          "type": "boolean",
+          "description": "Reopen the most recent project when launching without one.",
+          "default": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "files": {
+      "type": "object",
+      "title": "Files",
+      "properties": {
+        "exclude": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Names hidden from the file tree and search.",
+          "default": [
+            ".git",
+            ".noted",
+            "node_modules",
+            ".DS_Store"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "git": {
+      "type": "object",
+      "title": "Git",
+      "properties": {
+        "mode": {
+          "type": "string",
+          "description": "readOnly shows status only (git actions stay in the terminal); managed adds commit, sync, a branch menu and GitHub backup.",
+          "enum": [
+            "readOnly",
+            "managed"
+          ],
+          "default": "readOnly"
+        },
+        "autoCommit": {
+          "type": "string",
+          "description": "Managed mode: commit all changes automatically after a period with no edits.",
+          "enum": [
+            "off",
+            "afterIdle"
+          ],
+          "default": "off"
+        },
+        "autoCommitDelay": {
+          "type": "number",
+          "description": "Managed mode: idle minutes before an automatic commit.",
+          "default": 10,
+          "minimum": 1,
+          "maximum": 240
+        },
+        "autoSync": {
+          "type": "string",
+          "description": "Managed mode: sync with the remote after every commit.",
+          "enum": [
+            "off",
+            "afterCommit"
+          ],
+          "default": "off"
+        }
+      },
+      "additionalProperties": false
+    },
+    "checkpoints": {
+      "type": "object",
+      "title": "Checkpoints",
+      "properties": {
+        "enabled": {
+          "type": "boolean",
+          "description": "Snapshot the project before each agent prompt so any agent edit can be restored.",
+          "default": true
+        },
+        "agentCommands": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Foreground process names treated as agents in terminal tabs.",
+          "default": [
+            "claude",
+            "codex",
+            "gemini",
+            "aider",
+            "opencode",
+            "amp"
+          ]
+        },
+        "maxFileSizeMB": {
+          "type": "number",
+          "description": "Files larger than this are left out of checkpoints.",
+          "default": 10,
+          "minimum": 1,
+          "maximum": 200
+        },
+        "retainDays": {
+          "type": "number",
+          "description": "Checkpoints older than this many days are pruned.",
+          "default": 30,
+          "minimum": 1,
+          "maximum": 3650
+        },
+        "maxCount": {
+          "type": "number",
+          "description": "Maximum checkpoints kept per project (newest kept).",
+          "default": 500,
+          "minimum": 10,
+          "maximum": 10000
+        }
+      },
+      "additionalProperties": false
+    },
+    "keybindings": {
+      "type": "object",
+      "title": "Keybindings",
+      "description": "Command id → key chord overrides, e.g. {\"view.toggleTerminal\": \"ctrl+`\"}. Empty string unbinds.",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "default": {}
+    }
+  },
+  "additionalProperties": false
+}
