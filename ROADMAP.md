@@ -9,13 +9,9 @@ Have a bug or an idea? [Open an issue](../../issues/new/choose).
 ## Now
 
 - Post-launch stability and polish for 0.2.x
-- Clearer settings: options that need managed version control explain themselves and
-  offer the one-click fix instead of silently doing nothing
 
 ## Next
 
-- Host the config JSON schema publicly so external editors validate
-  `.noted/config.json` out of the box
 - "Report an Issue" in the app's Help menu, prefilled with your version
 
 ## Under consideration
@@ -26,6 +22,9 @@ Have a bug or an idea? [Open an issue](../../issues/new/choose).
 
 ## Shipped
 
+- **0.2.1** (2026-11-20): settings that need managed version control now explain
+  themselves and offer the one-click fix; config and theme JSON schemas are hosted
+  publicly (in this repo under `schema/`) so external editors validate out of the box.
 - **0.2.0** (2026-11-19): first public release. Native markdown editor, Claude Code
   terminal, checkpoints, project search, git awareness with managed mode, themes,
   licensing with a 14-day trial.
