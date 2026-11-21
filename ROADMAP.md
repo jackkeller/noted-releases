@@ -18,10 +18,12 @@ Have a bug or an idea? [Open an issue](../../issues/new/choose).
 
 - A publish action for blog projects, driven by frontmatter
 - Project templates: plain notes, blog or site, long-form writing
-- Richer theming: paper texture as a theme property, tinted title bar
 
 ## Shipped
 
+- **0.2.2** (2026-11-20): paper texture across the app shell (a theme property, so
+  custom themes can set it too), theme-tinted title bar, a soft window bevel, and the
+  new Paper theme.
 - **0.2.1** (2026-11-20): settings that need managed version control now explain
   themselves and offer the one-click fix; config and theme JSON schemas are hosted
   publicly (in this repo under `schema/`) so external editors validate out of the box.
